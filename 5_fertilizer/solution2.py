@@ -38,6 +38,7 @@ def closest_location_in_range(maps, seed_range):
     for seed in range(int(range_start), int(range_start) + int(range_length)):
         # Keep track of closest location
         closest_location_in_range = min(closest_location_in_range, map_seed_to_location(maps, seed))
+    print('closest location in range: ' + str(closest_location_in_range))
     return closest_location_in_range
 
 def get_closest_location(maps, seed_ranges):
@@ -46,7 +47,6 @@ def get_closest_location(maps, seed_ranges):
     for seed_range in seed_range_list:
         # Keep track of closest locations from each range
         closest_location = min(closest_location, closest_location_in_range(maps, seed_range))
-        print(closest_location)
     return closest_location
 
 def main():
