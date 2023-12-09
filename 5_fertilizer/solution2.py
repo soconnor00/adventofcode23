@@ -1,4 +1,6 @@
-# Note: this could not run in any feasible amount of time on my macbook air m2
+# Note: this took about 8 hours to run on my macbook air m2
+# One of the threads took 8 hours of CPU time
+# I highly recommend running this on good hardware
 
 import re
 from multiprocessing import Pool
