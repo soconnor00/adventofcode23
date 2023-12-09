@@ -1,6 +1,7 @@
 # Note: this could not run in any feasible amount of time on my macbook air m2
 
 import re
+from multiprocessing import Pool
 
 def map_num(mapping, num):
     mapped_num = num
@@ -42,12 +43,13 @@ def closest_location_in_range(maps, seed_range):
     return closest_location_in_range
 
 def get_closest_location(maps, seed_ranges):
-    closest_location = float('inf')
     seed_range_list = re.findall(r'\d+ \d+', seed_ranges)
-    for seed_range in seed_range_list:
-        # Keep track of closest locations from each range
-        closest_location = min(closest_location, closest_location_in_range(maps, seed_range))
-    return closest_location
+    # Multithread, one thread per seed range
+    with Pool(len(seed_range_list)) as pool:
+        return min(pool.starmap(
+            closest_location_in_range, 
+            [(maps, seed_range) for seed_range in seed_range_list]
+        ))
 
 def main():
     with open('input.txt', 'r') as f:
