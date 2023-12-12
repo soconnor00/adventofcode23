@@ -1,5 +1,5 @@
-# Note: this took about 8 hours to run on my macbook air m2
-# One of the threads took 8 hours of CPU time
+# Note: this took almost a whole day to run on my macbook air m2
+# One of the threads took 10 hours of CPU time
 # I highly recommend running this on good hardware
 
 import re
